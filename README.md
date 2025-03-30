@@ -22,10 +22,10 @@ Cada carpeta contiene una implementación completa e independiente de la aplicac
 
 ## Funcionalidades Clave
 
-- **Página de Inicio**: Muestra una lista de películas populares obtenidas de una API pública (The Movie Database API).
-- **Página de Detalle de Película**: Proporciona información detallada como título, sinopsis, calificación, entre otros.
-- **Búsqueda de Películas**: Permite a los usuarios buscar películas por título.
-- **Navegación Fluida**: Transiciones rápidas y sin interrupciones entre las distintas secciones de la aplicación.
+- Página de inicio: muestra una lista de películas populares obtenidas de una API pública (The Movie Database API).
+- Página de detalle de película: proporciona información detallada como título, sinopsis, calificación, entre otros.
+- Búsqueda de películas: permite a los usuarios buscar películas por título.
+- Navegación fluida: transiciones rápidas y sin interrupciones entre las distintas secciones de la aplicación.
 
 
 ## ¿Qué interés tiene todo esto?
