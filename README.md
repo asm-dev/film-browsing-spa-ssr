@@ -4,9 +4,14 @@ Este proyecto consiste en una aplicación web que permite a los usuarios explora
 
 ## Estructura
 
-Cada carpeta contiene una implementación completa e independiente de la aplicación, proporcionando un entorno limpio y separado.
+Cada carpeta contiene una implementación completa e independiente de la aplicación, proporcionando un entorno limpio y separado. Se agrega una carpeta compartida por sendas implementaciones para evitar la duplicidad y facilitar la escalabilidad del proyecto
 
 ```
+/shared/
+   ├── components/
+   ├── hooks/
+   └── utils/
+
 /react-spa
   ├── public/
   ├── src/
