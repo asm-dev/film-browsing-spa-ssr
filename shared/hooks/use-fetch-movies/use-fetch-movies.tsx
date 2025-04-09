@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { TMDB_API_KEY } from "../../config/tmdb.config";
 import { MoviesApiService } from "../../services/movies-service/movies-api-service";
 import { MovieData } from "../../services/movies-service/movies-api-service.types";
+import { UseMoviesResult } from "./use-fetch-movies.types";
 
-const api = new MoviesApiService(TMDB_API_KEY);
-
-export function useFetchMovies() {
+export function useFetchMovies(api: MoviesApiService): UseMoviesResult {
   const [movies, setMovies] = useState<MovieData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
