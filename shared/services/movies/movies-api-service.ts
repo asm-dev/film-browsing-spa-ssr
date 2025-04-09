@@ -1,5 +1,5 @@
 import { TMDB_API_URL, TMDB_LANG } from "../../config/tmdb.config";
-import { buildUrl, fetcher } from "../helpers";
+import { buildUrl, fetcher } from "../../helpers";
 import {
   MovieData,
   MoviesAPIServiceResponse,

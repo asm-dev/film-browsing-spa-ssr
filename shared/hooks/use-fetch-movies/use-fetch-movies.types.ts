@@ -1,4 +1,4 @@
-import { MovieData } from "../../services/movies-service/movies-api-service.types";
+import { MovieData } from "../../services/movies/movies-api-service.types";
 
 export type UseMoviesResult = {
   movies: MovieData[];

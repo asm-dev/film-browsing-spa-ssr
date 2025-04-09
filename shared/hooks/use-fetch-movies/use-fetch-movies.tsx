@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { MoviesApiService } from "../../services/movies-service/movies-api-service";
-import { MovieData } from "../../services/movies-service/movies-api-service.types";
+import { MoviesApiService } from "../../services/movies/movies-api-service";
+import { MovieData } from "../../services/movies/movies-api-service.types";
 import { UseMoviesResult } from "./use-fetch-movies.types";
 
 export function useFetchMovies(api: MoviesApiService): UseMoviesResult {
