@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.env
+.env.local
+.env.*.local
+react-spa/dist/
+react-spa/.vite/
+.next/
+out/
+next-ssr/.next/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+.vscode/
+*.log
+*.tsbuildinfo
