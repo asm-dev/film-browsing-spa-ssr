@@ -1,5 +1,4 @@
-import React from "react";
-import MovieCard from "../movie-card/movie-card";
+import MovieCard from "./MovieCard";
 
 export default function MovieList({ movieList }) {
   if (!movieList?.length) {
