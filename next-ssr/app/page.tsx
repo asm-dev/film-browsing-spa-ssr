@@ -1,5 +1,6 @@
 "use client";
 
+import { Container, Heading, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ErrorFallback from "shared/components/ErrorFallback";
 import MovieList from "shared/components/MovieList";
@@ -45,9 +46,13 @@ export default function HomePage() {
   }
 
   return (
-    <main>
-      <h1>Películas populares</h1>
-      <MovieList movieList={movies} />
-    </main>
+    <Container maxW="6xl" py={10}>
+      <VStack gap={6} align="stretch">
+        <Heading size="xl" textAlign="center" mb={4}>
+          Películas populares
+        </Heading>
+        <MovieList movieList={movies} />
+      </VStack>
+    </Container>
   );
 }

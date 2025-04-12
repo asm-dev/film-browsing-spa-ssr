@@ -8,13 +8,14 @@ export default function MovieCard({ movie }: { movie: MovieData }) {
   return (
     <Box
       borderWidth="1px"
-      borderRadius="xl"
+      borderRadius="md"
       overflow="hidden"
-      boxShadow="md"
+      boxShadow="sm"
       bg="white"
       _dark={{ bg: "gray.800" }}
       transition="all 0.2s ease"
-      _hover={{ boxShadow: "lg", transform: "translateY(-2px)" }}
+      _hover={{ boxShadow: "md", transform: "translateY(-2px)" }}
+      maxW="xs"
     >
       {movie.poster_path ? (
         <Image
@@ -22,22 +23,21 @@ export default function MovieCard({ movie }: { movie: MovieData }) {
           alt={movie.title}
           objectFit="cover"
           width="100%"
-          height="auto"
         />
       ) : (
-        <Box bg="gray.100" p={6} textAlign="center">
-          <Text fontStyle="italic" color="gray.600">
+        <Box bg="gray.100" p={4} textAlign="center">
+          <Text fontStyle="italic" color="gray.600" fontSize="sm">
             Imagen no disponible
           </Text>
         </Box>
       )}
 
-      <VStack align="start" gap={2} p={4}>
-        <Heading size="sm" lineClamp={2}>
+      <VStack align="start" gap={1} p={3}>
+        <Heading size="sm" noOfLines={2}>
           {movie.title}
         </Heading>
         <Box display="flex" alignItems="center" gap={1}>
-          <Icon as={FaStar} color="yellow.400" />
+          <Icon as={FaStar} color="yellow.400" boxSize={4} />
           <Text fontSize="sm" color="gray.600">
             {movie.vote_average}
           </Text>
