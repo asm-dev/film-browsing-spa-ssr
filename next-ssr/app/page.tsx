@@ -4,6 +4,10 @@ import { Container, Heading, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import ErrorFallback from "shared/components/ErrorFallback";
 import MovieList from "shared/components/MovieList";
+import {
+  enableMockClient,
+  isMockClientEnabled,
+} from "shared/helpers/mock-mode-handler";
 import { MOVIE_DATA_MOCK } from "shared/mocks/movie-data-mock";
 import { MoviesApiService } from "shared/services/movies/movies-api-service";
 import { MovieData } from "shared/services/movies/movies-api-service.types";
@@ -13,6 +17,12 @@ export default function HomePage() {
   const [error, setError] = useState<Error | null>(null);
   const [useMock, setUseMock] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
+
+  useEffect(() => {
+    if (isMockClientEnabled()) {
+      setUseMock(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (useMock) {
@@ -29,18 +39,23 @@ export default function HomePage() {
       .catch((err) => setError(err));
   }, [useMock, retryKey]);
 
+  const handleReset = () => {
+    setError(null);
+    setRetryKey((key) => key + 1);
+  };
+
+  const handleUseMock = () => {
+    enableMockClient();
+    setError(null);
+    setUseMock(true);
+  };
+
   if (error) {
     return (
       <ErrorFallback
         error={error}
-        reset={() => {
-          setError(null);
-          setRetryKey((key) => key + 1);
-        }}
-        useMock={() => {
-          setError(null);
-          setUseMock(true);
-        }}
+        reset={handleReset}
+        useMock={handleUseMock}
       />
     );
   }
