@@ -1,10 +1,11 @@
 "use client";
 
-import { Container, Heading, VStack } from "@chakra-ui/react";
+import { Container, Heading, SimpleGrid, VStack } from "@chakra-ui/react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import DisableMockButton from "shared/components/DisableMockButton";
 import ErrorFallback from "shared/components/ErrorFallback";
-import MovieList from "shared/components/MovieList";
+import MovieCard from "shared/components/MovieCard";
 import {
   enableMockClient,
   isMockEnabledClient,
@@ -70,7 +71,14 @@ export default function HomePage() {
         <Heading size="xl" textAlign="center" mb={4}>
           Películas populares
         </Heading>
-        <MovieList movieList={movies} />
+
+        <SimpleGrid columns={[1, 2, 3]} gap={6}>
+          {movies.map((movie) => (
+            <Link href={`/movie/${movie.id}`} key={movie.id}>
+              <MovieCard movie={movie} />
+            </Link>
+          ))}
+        </SimpleGrid>
       </VStack>
 
       {useMock && <DisableMockButton />}
