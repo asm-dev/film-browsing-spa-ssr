@@ -1,6 +1,7 @@
 "use client";
 
-import { Box, Button, Flex, Input } from "@chakra-ui/react";
+import { InputGroup, InputRightElement } from "@chakra-ui/input";
+import { Box, Button, Input } from "@chakra-ui/react";
 import { useState } from "react";
 
 type SearchBarProps = {
@@ -29,25 +30,39 @@ export default function SearchBar({
   };
 
   return (
-    <Box>
-      <Flex>
+    <Box w="100%">
+      <InputGroup size="md">
         <Input
-          placeholder={placeholder}
+          placeholder={placeholder || "Buscar películas..."}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          size="md"
+          borderRadius="md"
+          pr="5.5rem"
         />
-        <Button
-          onClick={handleSubmit}
-          size="md"
-          bg="gray.700"
-          color="white"
-          _hover={{ bg: "gray.800" }}
+        <InputRightElement
+          width="5.5rem"
+          height="100%"
+          pointerEvents="none"
+          right="0"
+          top="0"
         >
-          Buscar
-        </Button>
-      </Flex>
+          <Button
+            h="100%"
+            w="100%"
+            size="md"
+            bg="gray.700"
+            color="white"
+            _hover={{ bg: "gray.800" }}
+            onClick={handleSubmit}
+            borderLeftRadius={0}
+            borderRightRadius="md"
+            pointerEvents="auto"
+          >
+            Buscar
+          </Button>
+        </InputRightElement>
+      </InputGroup>
     </Box>
   );
 }
