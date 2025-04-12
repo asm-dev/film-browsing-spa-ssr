@@ -18,28 +18,31 @@ export default function HomePage() {
   const [movies, setMovies] = useState<MovieData[]>([]);
   const [error, setError] = useState<Error | null>(null);
   const [useMock, setUseMock] = useState(false);
+  const [ready, setReady] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
 
   useEffect(() => {
-    if (isMockEnabledClient()) {
-      setUseMock(true);
+    const shouldUseMock = isMockEnabledClient();
+    setUseMock(shouldUseMock);
+
+    if (shouldUseMock) {
+      setMovies(MOVIE_DATA_MOCK);
     }
-  }, []);
+
+    setReady(true);
+  }, [retryKey]);
 
   useEffect(() => {
-    if (useMock) {
-      setMovies(MOVIE_DATA_MOCK);
-      return;
+    if (ready && !useMock) {
+      const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY!;
+      const api = new MoviesApiService(apiKey);
+
+      api
+        .getPopularMovies()
+        .then((res) => setMovies(res.results))
+        .catch((err) => setError(err));
     }
-
-    const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY!;
-    const api = new MoviesApiService(apiKey);
-
-    api
-      .getPopularMovies()
-      .then((res) => setMovies(res.results))
-      .catch((err) => setError(err));
-  }, [useMock, retryKey]);
+  }, [useMock, retryKey, ready]);
 
   const handleReset = () => {
     setError(null);
@@ -50,6 +53,7 @@ export default function HomePage() {
     enableMockClient();
     setError(null);
     setUseMock(true);
+    setMovies(MOVIE_DATA_MOCK);
   };
 
   if (error) {
