@@ -1,6 +1,7 @@
 "use client";
 
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
+import React from "react";
 
 export default function RootLayout({
   children,
@@ -10,7 +11,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
-        <ChakraProvider>{children}</ChakraProvider>
+        <ChakraProvider value={defaultSystem}>{children}</ChakraProvider>
       </body>
     </html>
   );

@@ -1,15 +1,16 @@
+import { SimpleGrid, Text } from "@chakra-ui/react";
 import MovieCard from "./MovieCard";
 
 export default function MovieList({ movieList }) {
   if (!movieList?.length) {
-    return <p>No hay películas disponibles.</p>;
+    return <Text>No hay películas disponibles.</Text>;
   }
 
   return (
-    <div>
+    <SimpleGrid columns={[1, 2, 3]} spacing={6}>
       {movieList.map((movie) => (
         <MovieCard key={movie.id} movie={movie} />
       ))}
-    </div>
+    </SimpleGrid>
   );
 }
