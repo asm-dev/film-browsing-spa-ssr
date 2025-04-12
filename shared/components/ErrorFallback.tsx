@@ -1,4 +1,4 @@
-import { Box, Button, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Stack, Text } from "@chakra-ui/react";
 
 type ErrorFallbackProps = {
   error: Error;
@@ -12,25 +12,47 @@ export default function ErrorFallback({
   useMock,
 }: ErrorFallbackProps) {
   return (
-    <Box p={6} borderWidth={1} borderRadius="md" bg="red.50">
-      <VStack spacing={4} align="start">
-        <Text fontSize="xl" fontWeight="bold" color="red.600">
+    <Box
+      borderWidth="1px"
+      borderRadius="md"
+      bg="red.50"
+      p={6}
+      boxShadow="sm"
+      maxW="lg"
+      mx="auto"
+      mt={10}
+    >
+      <Stack gap={4} align="center" textAlign="center">
+        <Heading size="md" color="red.600">
           Algo salió mal
-        </Text>
-        <Text>{error?.message || "Error desconocido."}</Text>
-        <Box>
-          {reset && (
-            <Button onClick={reset} colorScheme="blue" mr={2}>
-              Reintentar
-            </Button>
-          )}
-          {useMock && (
-            <Button onClick={useMock} colorScheme="orange">
-              Cargar datos mock
-            </Button>
-          )}
-        </Box>
-      </VStack>
+        </Heading>
+        <Text color="red.800">{error.message}</Text>
+
+        {(reset || useMock) && (
+          <Flex mt={4} gap={3} justify="center" wrap="wrap">
+            {reset && (
+              <Button
+                onClick={reset}
+                bg="red.500"
+                color="white"
+                _hover={{ bg: "red.600" }}
+              >
+                Reintentar
+              </Button>
+            )}
+            {useMock && (
+              <Button
+                onClick={useMock}
+                bg="gray.700"
+                color="white"
+                _hover={{ bg: "gray.800" }}
+              >
+                Cargar datos mock
+              </Button>
+            )}
+          </Flex>
+        )}
+      </Stack>
     </Box>
   );
 }
