@@ -8,12 +8,10 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import router from "next/router";
 import { useEffect, useState } from "react";
 import DisableMockButton from "shared/components/DisableMockButton";
 import ErrorFallback from "shared/components/ErrorFallback";
 import MovieCard from "shared/components/MovieCard";
-import SearchBar from "shared/components/SearchBar";
 import {
   enableMockClient,
   isMockEnabledClient,
@@ -21,6 +19,7 @@ import {
 import { MOVIE_DATA_MOCK } from "shared/mocks/movie-data-mock";
 import { MoviesApiService } from "shared/services/movies/movies-api-service";
 import { MovieData } from "shared/services/movies/movies-api-service.types";
+import SearchBarWithRouter from "../components/SearchBarWithRouter";
 
 export default function HomePage() {
   const [movies, setMovies] = useState<MovieData[]>([]);
@@ -64,11 +63,6 @@ export default function HomePage() {
     setMovies(MOVIE_DATA_MOCK);
   };
 
-  const handleSearch = (query: string) => {
-    if (!query.trim()) return;
-    router.push(`/search?query=${encodeURIComponent(query)}`);
-  };
-
   if (error) {
     return (
       <>
@@ -88,7 +82,7 @@ export default function HomePage() {
         <Heading size="xl" textAlign="center" mb={4}>
           Películas populares
         </Heading>
-        <SearchBar onSearch={(query) => handleSearch(query)} />
+        <SearchBarWithRouter placeholder="Buscar películas..." />
         <SimpleGrid
           columns={[1, 2, 3, 4, 5]}
           gap={6}
