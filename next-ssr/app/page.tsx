@@ -2,12 +2,13 @@
 
 import { Container, Heading, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import DisableMockButton from "shared/components/DisableMockButton";
 import ErrorFallback from "shared/components/ErrorFallback";
 import MovieList from "shared/components/MovieList";
 import {
   enableMockClient,
-  isMockClientEnabled,
-} from "shared/helpers/mock-mode-handler";
+  isMockEnabledClient,
+} from "shared/mocks/mock-mode-client";
 import { MOVIE_DATA_MOCK } from "shared/mocks/movie-data-mock";
 import { MoviesApiService } from "shared/services/movies/movies-api-service";
 import { MovieData } from "shared/services/movies/movies-api-service.types";
@@ -19,7 +20,7 @@ export default function HomePage() {
   const [retryKey, setRetryKey] = useState(0);
 
   useEffect(() => {
-    if (isMockClientEnabled()) {
+    if (isMockEnabledClient()) {
       setUseMock(true);
     }
   }, []);
@@ -52,11 +53,14 @@ export default function HomePage() {
 
   if (error) {
     return (
-      <ErrorFallback
-        error={error}
-        reset={handleReset}
-        useMock={handleUseMock}
-      />
+      <>
+        <ErrorFallback
+          error={error}
+          reset={handleReset}
+          useMock={handleUseMock}
+        />
+        {useMock && <DisableMockButton />}
+      </>
     );
   }
 
@@ -68,6 +72,8 @@ export default function HomePage() {
         </Heading>
         <MovieList movieList={movies} />
       </VStack>
+
+      {useMock && <DisableMockButton />}
     </Container>
   );
 }

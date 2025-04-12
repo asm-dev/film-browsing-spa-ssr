@@ -1,4 +1,4 @@
-export function isMockClientEnabled(): boolean {
+export function isMockEnabledClient(): boolean {
   if (typeof window === "undefined") return false;
   return document.cookie.includes("useMock=true");
 }
@@ -9,8 +9,4 @@ export function enableMockClient() {
 
 export function disableMockClient() {
   document.cookie = "useMock=false; path=/";
-}
-
-export function isMockServerEnabled(): boolean {
-  return process.env.USE_MOCK === "true";
 }

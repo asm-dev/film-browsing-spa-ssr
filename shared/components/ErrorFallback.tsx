@@ -40,6 +40,7 @@ export default function ErrorFallback({
                 Reintentar
               </Button>
             )}
+
             {useMock && (
               <Button
                 onClick={useMock}

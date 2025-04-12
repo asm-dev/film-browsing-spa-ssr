@@ -1,6 +1,6 @@
 import { Container } from "@chakra-ui/react";
-import { cookies } from "next/headers";
 import MovieDetail from "shared/components/MovieDetail";
+import { isMockEnabledServer } from "shared/mocks/mock-mode-server";
 import { MOVIE_DATA_MOCK } from "shared/mocks/movie-data-mock";
 import { MoviesApiService } from "shared/services/movies/movies-api-service";
 import { MovieData } from "shared/services/movies/movies-api-service.types";
@@ -10,25 +10,21 @@ type PageProps = {
     id: string;
   };
 };
-
 export default async function MovieDetailPage({ params }: PageProps) {
-  const cookieStore = await cookies();
-  const useMock = cookieStore.get("useMock")?.value === "true";
+  const shouldUseMockData = await isMockEnabledServer();
 
-  let movie: MovieData;
+  const { id } = await Promise.resolve(params);
+  const movieId = Number(id);
 
-  if (useMock) {
-    const mockId = Number(params.id);
-    movie = MOVIE_DATA_MOCK.find((m) => m.id === mockId)!;
+  let movie: MovieData | undefined;
+
+  if (shouldUseMockData) {
+    movie = MOVIE_DATA_MOCK.find((m) => m.id === movieId);
     if (!movie) throw new Error("Película mock no encontrada");
   } else {
-    const apiKey = process.env.TMDB_API_KEY!;
+    const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY!;
     const api = new MoviesApiService(apiKey);
-    try {
-      movie = await api.getMovieDetails(Number(params.id));
-    } catch {
-      throw new Error("No se pudo cargar la película.");
-    }
+    movie = await api.getMovieDetails(movieId);
   }
 
   return (

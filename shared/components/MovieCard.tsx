@@ -33,7 +33,7 @@ export default function MovieCard({ movie }: { movie: MovieData }) {
       )}
 
       <VStack align="start" gap={1} p={3}>
-        <Heading size="sm" noOfLines={2}>
+        <Heading size="sm" lineClamp={2}>
           {movie.title}
         </Heading>
         <Box display="flex" alignItems="center" gap={1}>

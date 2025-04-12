@@ -1,3 +1,5 @@
+import { MovieData } from "../services/movies/movies-api-service.types";
+
 export const MOVIE_DATA_MOCK: MovieData[] = [
   {
     id: 1,
