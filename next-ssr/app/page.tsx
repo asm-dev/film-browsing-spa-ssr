@@ -1,6 +1,12 @@
 "use client";
 
-import { Container, Heading, SimpleGrid, VStack } from "@chakra-ui/react";
+import {
+  Link as ChakraLink,
+  Container,
+  Heading,
+  SimpleGrid,
+  VStack,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import DisableMockButton from "shared/components/DisableMockButton";
@@ -75,12 +81,25 @@ export default function HomePage() {
         <Heading size="xl" textAlign="center" mb={4}>
           Películas populares
         </Heading>
-
-        <SimpleGrid columns={[1, 2, 3]} gap={6}>
+        <SimpleGrid
+          columns={[1, 2, 3]}
+          gap={6}
+          px={{ base: 4, md: 0 }}
+          justifyItems="center"
+        >
           {movies.map((movie) => (
-            <Link href={`/movie/${movie.id}`} key={movie.id}>
+            <ChakraLink
+              w="full"
+              display="block"
+              as={Link}
+              href={`/movie/${movie.id}`}
+              key={movie.id}
+              maxW={{ base: "100%" }}
+              _hover={{ textDecoration: "none" }}
+              _focus={{ boxShadow: "none" }}
+            >
               <MovieCard movie={movie} />
-            </Link>
+            </ChakraLink>
           ))}
         </SimpleGrid>
       </VStack>

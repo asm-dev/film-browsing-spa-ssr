@@ -33,7 +33,7 @@ export default function DisableMockButton() {
       zIndex={1000}
       onClick={handleClick}
     >
-      Desactivar Mock
+      Quitar datos de prueba
     </Button>
   );
 }

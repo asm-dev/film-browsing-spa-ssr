@@ -15,7 +15,6 @@ export default function MovieCard({ movie }: { movie: MovieData }) {
       _dark={{ bg: "gray.800" }}
       transition="all 0.2s ease"
       _hover={{ boxShadow: "md", transform: "translateY(-2px)" }}
-      maxW="xs"
     >
       {movie.poster_path ? (
         <Image

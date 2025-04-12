@@ -48,7 +48,7 @@ export default function ErrorFallback({
                 color="white"
                 _hover={{ bg: "gray.800" }}
               >
-                Cargar datos mock
+                Cargar datos de prueba
               </Button>
             )}
           </Flex>
