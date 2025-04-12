@@ -44,4 +44,18 @@ export class MoviesApiService {
       language: this.lang,
     });
   }
+
+  public async getMoviesByQuery(
+    apiKey: string,
+    query: string
+  ): Promise<MoviesAPIServiceResponse> {
+    return fetcher<MoviesAPIServiceResponse>(
+      buildUrl(TMDB_API_URL, "/search/movie"),
+      {
+        api_key: apiKey,
+        language: TMDB_LANG,
+        query,
+      }
+    );
+  }
 }

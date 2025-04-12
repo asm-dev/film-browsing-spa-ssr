@@ -1,26 +1,16 @@
 {
-  "name": "next-ssr",
+  "name": "react-spa",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
   "dependencies": {
     "@chakra-ui/input": "^2.1.2",
     "@chakra-ui/react": "^3.15.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "framer-motion": "^12.6.5",
-    "next": "^15.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-router-dom": "^6.30.0",
     "shared": "*"
-  },
-  "devDependencies": {
-    "@types/node": "22.14.1",
-    "typescript": "5.8.3"
   }
 }

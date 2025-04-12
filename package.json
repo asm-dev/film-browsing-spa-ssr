@@ -1,0 +1,10 @@
+{
+  "name": "film-browsing-spa-ssr",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "shared",
+    "next-ssr",
+    "react-spa"
+  ]
+}

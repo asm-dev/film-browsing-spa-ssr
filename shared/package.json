@@ -1,15 +1,22 @@
 {
   "name": "shared",
   "version": "1.0.0",
-  "description": "",
-  "main": "./index.js",
-  "exports": {
-    ".": {
-      "import": "./index.js"
-    }
-  },
   "type": "module",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "main": "index.js",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "@chakra-ui/react": "^3.0.0",
+    "@chakra-ui/input": "^2.1.2",
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0",
+    "framer-motion": "^12.6.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@chakra-ui/react": "^3.15.1",
+    "@chakra-ui/input": "^2.1.2",
+    "react-icons": "^4.12.0"
+  }
 }
