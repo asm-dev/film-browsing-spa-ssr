@@ -8,10 +8,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import {
-  enableMockClient,
-  isMockEnabledClient,
-} from "../../mocks/mock-mode-client";
+import { useMockErrorHandlers } from "../../hooks/use-mock-error";
+import { isMockEnabledClient } from "../../mocks/mock-mode-client";
 import { MOVIE_DATA_MOCK } from "../../mocks/movie-data-mock";
 import { MoviesApiService } from "../../services/movies/movies-api-service";
 import { MovieData } from "../../services/movies/movies-api-service.types";
@@ -38,39 +36,29 @@ export default function Home({
   const [ready, setReady] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
 
+  const { handleReset, handleUseMock } = useMockErrorHandlers(
+    setError,
+    setRetryKey,
+    setUseMock,
+    setMovies
+  );
+
   useEffect(() => {
     const shouldUseMock = isMockEnabledClient();
     setUseMock(shouldUseMock);
-
-    if (shouldUseMock) {
-      setMovies(MOVIE_DATA_MOCK);
-    }
-
+    if (shouldUseMock) setMovies(MOVIE_DATA_MOCK);
     setReady(true);
   }, [retryKey]);
 
   useEffect(() => {
     if (ready && !useMock) {
       const api = new MoviesApiService(apiKey);
-
       api
         .getPopularMovies()
         .then((res) => setMovies(res.results))
         .catch((err) => setError(err));
     }
   }, [useMock, retryKey, ready, apiKey]);
-
-  const handleReset = () => {
-    setError(null);
-    setRetryKey((key) => key + 1);
-  };
-
-  const handleUseMock = () => {
-    enableMockClient();
-    setError(null);
-    setUseMock(true);
-    setMovies(MOVIE_DATA_MOCK);
-  };
 
   if (error) {
     return (
@@ -80,6 +68,7 @@ export default function Home({
           reset={handleReset}
           onUseMock={handleUseMock}
         />
+        {useMock && <DisableMockButton />}
       </>
     );
   }

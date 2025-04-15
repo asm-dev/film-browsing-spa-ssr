@@ -18,7 +18,7 @@ export default function MoviePage() {
       const mockMovie = MOVIE_DATA_MOCK.find((m) => m.id === Number(id));
       if (mockMovie) setMovie(mockMovie);
     } else {
-      const apiKey = process.env.REACT_APP_TMDB_API_KEY!;
+      const apiKey = import.meta.env.REACT_APP_TMDB_API_KEY!;
       const api = new MoviesApiService(apiKey);
       api.getMovieDetails(Number(id)).then(setMovie);
     }

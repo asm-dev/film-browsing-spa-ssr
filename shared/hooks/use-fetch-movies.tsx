@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
-import { MoviesApiService } from "../../services/movies/movies-api-service";
-import { MovieData } from "../../services/movies/movies-api-service.types";
-import { UseMoviesResult } from "./use-fetch-movies.types";
+import { MoviesApiService } from "../services/movies/movies-api-service";
+import { MovieData } from "../services/movies/movies-api-service.types";
+
+type UseMoviesResult = {
+  movies: MovieData[];
+  loading: boolean;
+  error: string | null;
+};
 
 export function useFetchMovies(api: MoviesApiService): UseMoviesResult {
   const [movies, setMovies] = useState<MovieData[]>([]);
