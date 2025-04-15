@@ -1,6 +1,6 @@
 "use client";
 
-import ErrorFallback from "shared/components/ErrorFallback";
+import ErrorFallback from "shared/components/organisms/ErrorFallback";
 
 type ErrorPageProps = {
   error: Error;

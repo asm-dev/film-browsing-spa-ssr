@@ -3,8 +3,8 @@
 import { Container, Heading, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import MovieCard from "shared/components/MovieCard";
-import SearchBar from "shared/components/SearchBar";
+import MovieCard from "shared/components/molecules/MovieCard";
+import SearchBar from "shared/components/organisms/SearchBar";
 import { MOVIE_DATA_MOCK } from "shared/mocks/movie-data-mock";
 import { MoviesApiService } from "shared/services/movies/movies-api-service";
 import { MovieData } from "shared/services/movies/movies-api-service.types";

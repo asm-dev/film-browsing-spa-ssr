@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import {
   disableMockClient,
   isMockEnabledClient,
-} from "../mocks/mock-mode-client";
+} from "../../mocks/mock-mode-client";
 
 export default function DisableMockButton() {
   const [visible, setVisible] = useState(false);

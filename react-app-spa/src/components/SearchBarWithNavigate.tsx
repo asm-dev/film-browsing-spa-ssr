@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 import SearchBar from "shared/components/organisms/SearchBar";
 
 type Props = {
@@ -8,15 +8,15 @@ type Props = {
   initialQuery?: string;
 };
 
-export default function SearchBarWithRouter({
+export default function SearchBarWithNavigate({
   placeholder,
   initialQuery,
 }: Props) {
-  const router = useRouter();
+  const navigate = useNavigate();
 
   const handleNavigate = (query: string) => {
     if (!query.trim()) return;
-    router.push(`/search?query=${encodeURIComponent(query)}`);
+    navigate(`/search?query=${encodeURIComponent(query)}`);
   };
 
   return (

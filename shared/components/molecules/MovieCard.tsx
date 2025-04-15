@@ -1,6 +1,6 @@
 import { Box, Heading, Icon, Image, Text, VStack } from "@chakra-ui/react";
 import { FaStar } from "react-icons/fa";
-import { MovieData } from "../services/movies/movies-api-service.types";
+import { MovieData } from "../../services/movies/movies-api-service.types";
 
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w185";
 
