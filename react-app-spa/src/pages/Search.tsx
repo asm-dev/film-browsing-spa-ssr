@@ -1,6 +1,6 @@
 import { Container, Heading, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import DisableMockButton from "shared/components/atoms/DisableMockButton";
 import MovieCard from "shared/components/molecules/MovieCard";
 import ErrorFallback from "shared/components/organisms/ErrorFallback";
@@ -87,7 +87,9 @@ export default function SearchPage() {
           justifyItems="center"
         >
           {results.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
+            <Link to={`/movie/${movie.id}`} key={movie.id}>
+              <MovieCard key={movie.id} movie={movie} />
+            </Link>
           ))}
         </SimpleGrid>
       </VStack>
