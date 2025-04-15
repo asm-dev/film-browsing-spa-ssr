@@ -43,10 +43,6 @@ By developing this app in both SPA and SSR approaches, we can better compare the
 | SEO Support          | Requires extra setup              | Built-in SEO support            |
 | API Key Handling     | Via `.env` and client-only logic  | Via `.env` and server rendering |
 | Error Handling       | React ErrorBoundary               | `app/error.tsx` and boundary    |
-| Mock Data Toggle     | Works in both via shared fallback | Same fallback UX                |
-| Code Sharing         | Uses `/shared` workspace          | Uses `/shared` workspace        |
-| Monorepo Integration | Yes (npm workspaces)              | Yes (npm workspaces)            |
-
----
 
 Feel free to explore each version of the app and switch between mock and real data modes as needed.
+
