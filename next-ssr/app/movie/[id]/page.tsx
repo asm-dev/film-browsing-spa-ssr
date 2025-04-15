@@ -20,7 +20,7 @@ export default async function MovieDetailPage({ params }: PageProps) {
 
   if (shouldUseMockData) {
     movie = MOVIE_DATA_MOCK.find((m) => m.id === movieId);
-    if (!movie) throw new Error("Película mock no encontrada");
+    if (!movie) throw new Error("Película no encontrada");
   } else {
     const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY!;
     const api = new MoviesApiService(apiKey);

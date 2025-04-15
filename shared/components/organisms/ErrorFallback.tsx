@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Heading, Stack, Text } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 
 type ErrorFallbackProps = {
   error: Error;
@@ -11,6 +12,8 @@ export default function ErrorFallback({
   reset,
   onUseMock,
 }: ErrorFallbackProps) {
+  const { t } = useTranslation();
+
   return (
     <Box
       borderWidth="1px"
@@ -24,7 +27,7 @@ export default function ErrorFallback({
     >
       <Stack gap={4} align="center" textAlign="center">
         <Heading size="md" color="red.600">
-          Algo salió mal
+          {t("error.somethingWentWrong")}
         </Heading>
         <Text color="red.800">{error.message}</Text>
 
@@ -37,7 +40,7 @@ export default function ErrorFallback({
                 color="white"
                 _hover={{ bg: "red.600" }}
               >
-                Reintentar
+                {t("action.retry")}
               </Button>
             )}
             {onUseMock && (
@@ -47,7 +50,7 @@ export default function ErrorFallback({
                 color="white"
                 _hover={{ bg: "gray.800" }}
               >
-                Cargar datos de prueba
+                {t("action.loadMockData")}
               </Button>
             )}
           </Flex>

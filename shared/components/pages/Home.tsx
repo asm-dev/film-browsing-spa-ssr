@@ -8,6 +8,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useMockErrorHandlers } from "../../hooks/use-mock-error";
 import { isMockEnabledClient } from "../../mocks/mock-mode-client";
 import { MOVIE_DATA_MOCK } from "../../mocks/movie-data-mock";
@@ -60,6 +61,8 @@ export default function Home({
     }
   }, [useMock, retryKey, ready, apiKey]);
 
+  const { t } = useTranslation();
+
   if (error) {
     return (
       <>
@@ -77,7 +80,7 @@ export default function Home({
     <Container maxW="6xl" py={10}>
       <VStack gap={6} align="stretch">
         <Heading size="xl" textAlign="center" mb={4}>
-          Películas populares
+          {t("movie.popular")}
         </Heading>
 
         <SearchBarComponent />

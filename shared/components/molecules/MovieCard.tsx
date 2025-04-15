@@ -1,10 +1,13 @@
 import { Box, Heading, Icon, Image, Text, VStack } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import { FaStar } from "react-icons/fa";
 import { MovieData } from "../../services/movies/movies-api-service.types";
 
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w185";
 
 export default function MovieCard({ movie }: { movie: MovieData }) {
+  const { t } = useTranslation();
+
   return (
     <Box
       borderWidth="1px"
@@ -26,7 +29,7 @@ export default function MovieCard({ movie }: { movie: MovieData }) {
       ) : (
         <Box bg="gray.100" p={4} textAlign="center">
           <Text fontStyle="italic" color="gray.600" fontSize="sm">
-            Imagen no disponible
+            {t("error.imageNotAvailable")}
           </Text>
         </Box>
       )}

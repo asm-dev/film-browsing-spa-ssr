@@ -1,5 +1,6 @@
 import { Container, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import MovieDetail from "shared/components/organisms/MovieDetail";
 import { isMockEnabledClient } from "shared/mocks/mock-mode-client";
@@ -24,10 +25,12 @@ export default function MoviePage() {
     }
   }, [id]);
 
+  const { t } = useTranslation();
+
   if (!movie) {
     return (
       <Container maxW="4xl" py={10}>
-        <Text>Película no encontrada</Text>
+        <Text>{t("error.movieNotFound")}</Text>
       </Container>
     );
   }

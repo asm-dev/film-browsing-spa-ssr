@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Home from "shared/components/pages/Home";
+import "../../i18n";
 import SearchBarWithRouter from "../components/SearchBarWithRouter";
 
 export default function HomePage() {

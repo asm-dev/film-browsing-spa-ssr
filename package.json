@@ -5,6 +5,7 @@
   "workspaces": [
     "shared",
     "next-ssr",
-    "react-app-spa"
+    "react-app-spa",
+    "i18n"
   ]
 }
