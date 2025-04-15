@@ -15,6 +15,7 @@ import { MOVIE_DATA_MOCK } from "../../mocks/movie-data-mock";
 import { MoviesApiService } from "../../services/movies/movies-api-service";
 import { MovieData } from "../../services/movies/movies-api-service.types";
 import DisableMockButton from "../atoms/DisableMockButton";
+import ToggleLanguageButton from "../atoms/ToggleLanguageButton";
 import MovieCard from "../molecules/MovieCard";
 import ErrorFallback from "../organisms/ErrorFallback";
 
@@ -77,38 +78,41 @@ export default function Home({
   }
 
   return (
-    <Container maxW="6xl" py={10}>
-      <VStack gap={6} align="stretch">
-        <Heading size="xl" textAlign="center" mb={4}>
-          {t("movie.popular")}
-        </Heading>
+    <>
+      <ToggleLanguageButton />
+      <Container maxW="6xl" py={10}>
+        <VStack gap={6} align="stretch">
+          <Heading size="xl" textAlign="center" mb={4}>
+            {t("movie.popular")}
+          </Heading>
 
-        <SearchBarComponent />
+          <SearchBarComponent />
 
-        <SimpleGrid
-          columns={[1, 2, 3, 4, 5]}
-          gap={6}
-          px={{ base: 4, md: 0 }}
-          justifyItems="center"
-        >
-          {movies.map((movie) => (
-            <ChakraLink
-              key={movie.id}
-              as={LinkComponent}
-              {...{ [linkPropName]: `/movie/${movie.id}` }}
-              w="full"
-              display="block"
-              maxW={{ base: "100%" }}
-              _hover={{ textDecoration: "none" }}
-              _focus={{ boxShadow: "none" }}
-            >
-              <MovieCard movie={movie} />
-            </ChakraLink>
-          ))}
-        </SimpleGrid>
-      </VStack>
+          <SimpleGrid
+            columns={[1, 2, 3, 4, 5]}
+            gap={6}
+            px={{ base: 4, md: 0 }}
+            justifyItems="center"
+          >
+            {movies.map((movie) => (
+              <ChakraLink
+                key={movie.id}
+                as={LinkComponent}
+                {...{ [linkPropName]: `/movie/${movie.id}` }}
+                w="full"
+                display="block"
+                maxW={{ base: "100%" }}
+                _hover={{ textDecoration: "none" }}
+                _focus={{ boxShadow: "none" }}
+              >
+                <MovieCard movie={movie} />
+              </ChakraLink>
+            ))}
+          </SimpleGrid>
+        </VStack>
 
-      {useMock && <DisableMockButton />}
-    </Container>
+        {useMock && <DisableMockButton />}
+      </Container>
+    </>
   );
 }
