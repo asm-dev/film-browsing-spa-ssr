@@ -2,6 +2,8 @@
 
 This project is a web application that allows users to explore a list of popular movies, search movies by title, and view detailed information for each movie. The app is implemented in two distinct versions: **SPA (Single Page Application)** using React, and **SSR (Server Side Rendering)** using Next.js.
 
+![image](https://github.com/user-attachments/assets/d2cb9720-903d-48d9-a2ec-3f1e71180e81)
+
 ## Structure
 
 Each app has its own directory: `/react-app-spa` and `/next-ssr`. A shared workspace `/shared` contains reusable components, services, types, and mock data, promoting code reuse and scalability.
