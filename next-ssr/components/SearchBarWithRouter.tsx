@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import SearchBar from "shared/components/SearchBar";
+import SearchBar from "shared/components/organisms/SearchBar";
 
 type Props = {
   placeholder?: string;

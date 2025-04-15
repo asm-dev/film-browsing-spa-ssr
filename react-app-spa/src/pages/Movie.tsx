@@ -1,8 +1,7 @@
-// src/pages/MoviePage.tsx
 import { Container, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import MovieDetail from "shared/components/MovieDetail";
+import MovieDetail from "shared/components/organisms/MovieDetail";
 import { isMockEnabledClient } from "shared/mocks/mock-mode-client";
 import { MOVIE_DATA_MOCK } from "shared/mocks/movie-data-mock";
 import { MoviesApiService } from "shared/services/movies/movies-api-service";

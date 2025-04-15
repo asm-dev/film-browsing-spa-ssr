@@ -1,5 +1,5 @@
 import { Container } from "@chakra-ui/react";
-import MovieDetail from "shared/components/MovieDetail";
+import MovieDetail from "shared/components/organisms/MovieDetail";
 import { isMockEnabledServer } from "shared/mocks/mock-mode-server";
 import { MOVIE_DATA_MOCK } from "shared/mocks/movie-data-mock";
 import { MoviesApiService } from "shared/services/movies/movies-api-service";

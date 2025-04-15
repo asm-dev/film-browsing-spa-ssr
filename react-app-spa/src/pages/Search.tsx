@@ -1,7 +1,7 @@
 import { Container, Heading, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import MovieCard from "shared/components/MovieCard";
+import MovieCard from "shared/components/molecules/MovieCard";
 import { MoviesApiService } from "shared/services/movies/movies-api-service";
 import { MovieData } from "shared/services/movies/movies-api-service.types";
 import SearchBarWithNavigate from "../components/SearchBarWithNavigate";

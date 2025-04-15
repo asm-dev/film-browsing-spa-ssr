@@ -1,6 +1,6 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import { MovieData } from "../services/movies/movies-api-service.types";
-import MovieCard from "./MovieCard";
+import { MovieData } from "../../services/movies/movies-api-service.types";
+import MovieCard from "../molecules/MovieCard";
 
 export default function MovieList({ movieList }: { movieList: MovieData[] }) {
   if (!movieList?.length) {
