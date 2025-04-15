@@ -1,0 +1,28 @@
+{
+  "movie": {
+    "popular": "Películas populares"
+  },
+  "action": {
+    "retry": "Reintentar",
+    "loadMockData": "Cargar datos de prueba",
+    "search": "Buscar",
+    "searchMovies": "Buscar películas..."
+  },
+  "error": {
+    "removeMockData": "Quitar datos de prueba",
+    "imageNotAvailable": "Imagen no disponible",
+    "somethingWentWrong": "Algo salió mal",
+    "noMovies": "No hay películas disponibles.",
+    "movieNotFound": "Película no encontrada",
+    "noSearchResults": "No se encontraron resultados."
+  },
+  "label": {
+    "score": "Puntuación:",
+    "releaseDate": "Fecha de estreno:",
+    "tmdbId": "ID TMDb:"
+  },
+  "search": {
+    "title": "Resultados de búsqueda",
+    "resultsFor": "Resultados de búsqueda para:"
+  }
+}

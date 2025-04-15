@@ -3,6 +3,7 @@
 import { InputGroup, InputRightElement } from "@chakra-ui/input";
 import { Box, Button, Input } from "@chakra-ui/react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type SearchBarProps = {
   onSearch: (query: string) => void;
@@ -13,9 +14,11 @@ type SearchBarProps = {
 export default function SearchBar({
   onSearch,
   initialQuery = "",
-  placeholder = "Buscar películas...",
+  placeholder,
 }: SearchBarProps) {
   const [query, setQuery] = useState(initialQuery);
+
+  const { t } = useTranslation();
 
   const handleSubmit = () => {
     if (query.trim()) {
@@ -33,7 +36,7 @@ export default function SearchBar({
     <Box w="100%">
       <InputGroup size="md">
         <Input
-          placeholder={placeholder || "Buscar películas..."}
+          placeholder={placeholder || t("action.searchMovies")}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
@@ -59,7 +62,7 @@ export default function SearchBar({
             borderRightRadius="md"
             pointerEvents="auto"
           >
-            Buscar
+            {t("action.search")}
           </Button>
         </InputRightElement>
       </InputGroup>

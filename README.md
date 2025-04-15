@@ -1,33 +1,52 @@
-# Explorador de películas con routing SPA/SSR
+# Movie Explorer SPA/SSR
 
-Este proyecto consiste en una aplicación web que permite a los usuarios explorar una lista de películas populares, buscar películas por título y obtener detalles específicos de cada película. La aplicación se desarrolla en dos enfoques diferentes: SPA (Single Page Application) y SSR (Server Side Rendering), utilizando dos de las herramientas más populares en el ecosistema de desarrollo **React** y **Next.js**.
+This project is a web application that allows users to explore a list of popular movies, search movies by title, and view detailed information for each movie. The app is implemented in two distinct versions: **SPA (Single Page Application)** using React, and **SSR (Server Side Rendering)** using Next.js.
 
-## Estructura
+## Structure
 
-Cada carpeta contiene una implementación completa e independiente de la aplicación, proporcionando un entorno limpio y separado. Se agrega una carpeta compartida por sendas implementaciones para evitar la duplicidad y facilitar la escalabilidad del proyecto.
+Each app has its own directory: `/react-app-spa` and `/next-ssr`. A shared workspace `/shared` contains reusable components, services, types, and mock data, promoting code reuse and scalability.
 
-## Funcionalidades clave
+## Key Features
 
-- Página de inicio: muestra una lista de películas populares obtenidas de una API pública (The Movie Database API).
-- Página de detalle de película: proporciona información detallada como título, sinopsis, calificación, entre otros.
-- Búsqueda de películas: permite a los usuarios buscar películas por título.
-- Navegación fluida: transiciones rápidas y sin interrupciones entre las distintas secciones de la aplicación.
+- **Home Page**: Displays a list of popular movies retrieved from a public API (The Movie Database API).
+- **Movie Detail Page**: Shows detailed information including title, synopsis, rating, release date, and more.
+- **Search Functionality**: Allows users to search for movies by title and view relevant results instantly.
+- **Mock Data Mode**: The app supports a mock data mode that lets users explore the application without needing a valid TMDb API key. This is especially useful for testing or development environments.
+- **Error Handling**: Includes user-friendly error boundaries and fallback UIs. For instance, if the API key is missing or invalid, the app shows a clear error message and allows switching to mock data with a single click.
+- **Shared Component Library**: Both the SPA and SSR implementations use a common `shared` workspace, where UI components, services, types, and mock logic are defined and reused. This avoids duplication and ensures consistency across both environments.
+- **Monorepo Architecture**: The project is structured as a monorepo using [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces), with separate apps for the React SPA (`/react-app-spa`) and Next.js SSR (`/next-ssr`), and a shared package (`/shared`) that encapsulates all reusable logic.
 
-## ¿Qué interés tiene todo esto?
+## Why Is Any of This Interesting?
 
-El desarrollo de esta aplicación en versiones SPA y SSR me ha permitido comparar dos métodos clave de creación de aplicaciones web modernas:
+By developing this app in both SPA and SSR approaches, we can better compare the two core paradigms of modern web development:
 
-1. **Enrutamiento en SPA**:
+### SPA Routing
 
-   - En una SPA, como la versión de esta aplicación construida con React y React Router DOM, el enrutamiento se maneja completamente en el cliente. Esto significa que, una vez que se carga la página inicial, la navegación entre secciones ocurre de manera instantánea sin necesidad de recargar toda la página desde el servidor.
-   - Este enfoque ofrece una experiencia de usuario muy fluida y rápida, ideal para aplicaciones donde la interacción constante y la inmediatez son esenciales.
-   - El desafío en una SPA está en manejar correctamente la carga de datos dinámicos y asegurarse de que la aplicación sea amigable para los motores de búsqueda (SEO), lo que puede requerir soluciones adicionales.
+- Client-side routing handled with React Router.
+- Fast, smooth navigation without full page reloads.
+- SEO and initial load performance require extra care.
+- Great for dynamic, interactive apps.
 
-2. **Enrutamiento en SSR**:
-   - En el caso de la versión SSR, construida con Next.js, el contenido y las páginas se renderizan en el servidor antes de enviarse al cliente. Esto mejora el tiempo de carga inicial y garantiza que los motores de búsqueda puedan indexar fácilmente el contenido.
-   - Next.js utiliza un sistema de enrutamiento basado en el directorio de archivos, lo que simplifica la estructuración de las rutas. En esta aplicación, cada página (inicio, detalle de película, búsqueda) se configura directamente como un archivo en el directorio `app/`, lo que hace que facilita la organización y el desarrollo.
-   - Este enfoque es ideal para aplicaciones que priorizan el rendimiento y necesitan entregar contenido optimizado para distintos dispositivos y conexiones.
+### SSR Routing
 
-## ¿Alguna otra cuestión interesante?
+- Uses Next.js file-based routing (`/app` directory structure).
+- Server renders pages with API data before sending to client.
+- Better SEO and initial load performance out of the box.
+- Simplifies routing and layout organization.
 
-Aunque no era el objetivo del proyecto, además de procurar mantener claridad y limpieza en el código, nos aseguramos de implementar métodos de **manejo de errores**. Por ejemplo, si intentamos llamar desde el servidor de Next a la API sin una key veremos el error tanto en consola como en pantalla gracias al componente compartido `ErrorFallback` y `error.tsx` propio de Next.js
+### Main Differences
+
+| Feature              | SPA (React)                       | SSR (Next.js)                   |
+| -------------------- | --------------------------------- | ------------------------------- |
+| Routing Mechanism    | React Router (manual config)      | File-based routing              |
+| Initial Load         | Faster after first load           | Faster on first paint           |
+| SEO Support          | Requires extra setup              | Built-in SEO support            |
+| API Key Handling     | Via `.env` and client-only logic  | Via `.env` and server rendering |
+| Error Handling       | React ErrorBoundary               | `app/error.tsx` and boundary    |
+| Mock Data Toggle     | Works in both via shared fallback | Same fallback UX                |
+| Code Sharing         | Uses `/shared` workspace          | Uses `/shared` workspace        |
+| Monorepo Integration | Yes (npm workspaces)              | Yes (npm workspaces)            |
+
+---
+
+Feel free to explore each version of the app and switch between mock and real data modes as needed.

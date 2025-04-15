@@ -1,0 +1,28 @@
+{
+  "movie": {
+    "popular": "Popular Movies"
+  },
+  "action": {
+    "retry": "Retry",
+    "loadMockData": "Load mock data",
+    "search": "Search",
+    "searchMovies": "Search movies..."
+  },
+  "error": {
+    "removeMockData": "Remove mock data",
+    "imageNotAvailable": "Image not available",
+    "somethingWentWrong": "Something went wrong",
+    "noMovies": "No movies available.",
+    "movieNotFound": "Movie not found",
+    "noSearchResults": "No results found."
+  },
+  "label": {
+    "score": "Score:",
+    "releaseDate": "Release date:",
+    "tmdbId": "TMDb ID:"
+  },
+  "search": {
+    "title": "Search Results",
+    "resultsFor": "Search results for:"
+  }
+}

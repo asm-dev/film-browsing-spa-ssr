@@ -1,5 +1,6 @@
 import { Container, Heading, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useSearchParams } from "react-router-dom";
 import DisableMockButton from "shared/components/atoms/DisableMockButton";
 import MovieCard from "shared/components/molecules/MovieCard";
@@ -70,11 +71,13 @@ export default function SearchPage() {
     );
   }
 
+  const { t } = useTranslation();
+
   return (
     <Container maxW="6xl" py={10}>
       <VStack align="stretch" gap={6}>
         <Heading size="lg">
-          Resultados de búsqueda para:{" "}
+          {t("search.resultsFor")}{" "}
           <Text as="span" color="blue.500">
             {query}
           </Text>

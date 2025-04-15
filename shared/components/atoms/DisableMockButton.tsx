@@ -2,6 +2,7 @@
 
 import { Button } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   disableMockClient,
   isMockEnabledClient,
@@ -15,6 +16,8 @@ export default function DisableMockButton() {
       setVisible(true);
     }
   }, []);
+
+  const { t } = useTranslation();
 
   const handleClick = () => {
     disableMockClient();
@@ -33,7 +36,7 @@ export default function DisableMockButton() {
       zIndex={1000}
       onClick={handleClick}
     >
-      Quitar datos de prueba
+      {t("error.removeMockData")}
     </Button>
   );
 }

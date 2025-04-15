@@ -3,6 +3,7 @@
 import { Container, Heading, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import MovieCard from "shared/components/molecules/MovieCard";
 import SearchBar from "shared/components/organisms/SearchBar";
 import { MOVIE_DATA_MOCK } from "shared/mocks/movie-data-mock";
@@ -40,6 +41,8 @@ export default function SearchPageClient({
     }
   }, [query, useMock]);
 
+  const { t } = useTranslation();
+
   const handleSearch = (newQuery: string) => {
     if (!newQuery.trim()) return;
     router.push(`/search?query=${encodeURIComponent(newQuery)}`);
@@ -56,7 +59,7 @@ export default function SearchPageClient({
 
         {query && results.length === 0 && (
           <Text textAlign="center" color="gray.500">
-            No se encontraron resultados.
+            {t("error.noSearchResults")}
           </Text>
         )}
 
