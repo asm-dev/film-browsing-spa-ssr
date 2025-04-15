@@ -12,7 +12,7 @@ export class MoviesApiService {
 
   constructor(apiKey: string) {
     if (!apiKey) {
-      throw new Error("Se necesita una API Key para acceder a la API de TMDb");
+      throw new Error("You'll need an API Key to access TMDb");
     }
     this.apiKey = apiKey;
   }

@@ -1,3 +1,5 @@
+"use client";
+
 import { Heading, Image, Text, VStack } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { MovieData } from "shared/services/movies/movies-api-service.types";
