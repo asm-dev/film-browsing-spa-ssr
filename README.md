@@ -10,13 +10,13 @@ Each app has its own directory: `/react-app-spa` and `/next-ssr`. A shared works
 
 ## Key Features
 
-- **Home Page**: Displays a list of popular movies retrieved from a public API (The Movie Database API).
-- **Movie Detail Page**: Shows detailed information including title, synopsis, rating, release date, and more.
-- **Search Functionality**: Allows users to search for movies by title and view relevant results instantly.
-- **Mock Data Mode**: The app supports a mock data mode that lets users explore the application without needing a valid TMDb API key. This is especially useful for testing or development environments.
-- **Error Handling**: Includes user-friendly error boundaries and fallback UIs. For instance, if the API key is missing or invalid, the app shows a clear error message and allows switching to mock data with a single click.
-- **Shared Component Library**: Both the SPA and SSR implementations use a common `shared` workspace, where UI components, services, types, and mock logic are defined and reused. This avoids duplication and ensures consistency across both environments.
-- **Monorepo Architecture**: The project is structured as a monorepo using [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces), with separate apps for the React SPA (`/react-app-spa`) and Next.js SSR (`/next-ssr`), and a shared package (`/shared`) that encapsulates all reusable logic.
+- **Home Page**: displays a list of popular movies retrieved from a public API (The Movie Database API).
+- **Movie Detail Page**: shows detailed information including title, synopsis, rating, release date, and more.
+- **Search Functionality**: allows users to search for movies by title and view relevant results instantly.
+- **Mock Data Mode**: the app supports a mock data mode that lets users explore the application without needing a valid TMDb API key. This is especially useful for testing or development environments.
+- **Error Handling**: includes user-friendly error boundaries and fallback UIs. For instance, if the API key is missing or invalid, the app shows a clear error message and allows switching to mock data with a single click.
+- **Shared Component Library**: both the SPA and SSR implementations use a common `shared` workspace, where UI components, services, types, and mock logic are defined and reused. This avoids duplication and ensures consistency across both environments.
+- **Monorepo Architecture**: the project is structured as a monorepo using [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces), with separate apps for the React SPA (`/react-app-spa`) and Next.js SSR (`/next-ssr`), and a shared package (`/shared`) that encapsulates all reusable logic.
 
 ## Why Is Any of This Interesting?
 
