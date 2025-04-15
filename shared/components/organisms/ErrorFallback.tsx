@@ -3,13 +3,13 @@ import { Box, Button, Flex, Heading, Stack, Text } from "@chakra-ui/react";
 type ErrorFallbackProps = {
   error: Error;
   reset?: () => void;
-  useMock?: () => void;
+  onUseMock?: () => void;
 };
 
 export default function ErrorFallback({
   error,
   reset,
-  useMock,
+  onUseMock,
 }: ErrorFallbackProps) {
   return (
     <Box
@@ -28,7 +28,7 @@ export default function ErrorFallback({
         </Heading>
         <Text color="red.800">{error.message}</Text>
 
-        {(reset || useMock) && (
+        {(reset || onUseMock) && (
           <Flex mt={4} gap={3} justify="center" wrap="wrap">
             {reset && (
               <Button
@@ -40,10 +40,9 @@ export default function ErrorFallback({
                 Reintentar
               </Button>
             )}
-
-            {useMock && (
+            {onUseMock && (
               <Button
-                onClick={useMock}
+                onClick={onUseMock}
                 bg="gray.700"
                 color="white"
                 _hover={{ bg: "gray.800" }}

@@ -1,9 +1,9 @@
+import { NextConfig } from "next";
 import path from "path";
-import type { Configuration } from "webpack";
 
-const nextConfig = {
+const nextConfig: NextConfig = {
   reactStrictMode: true,
-  webpack: (config: Configuration) => {
+  webpack: (config) => {
     config.resolve = {
       ...(config.resolve || {}),
       alias: {
@@ -11,6 +11,11 @@ const nextConfig = {
         shared: path.resolve(__dirname, "../shared"),
       },
     };
+
+    config.infrastructureLogging = {
+      level: "error",
+    };
+
     return config;
   },
 };

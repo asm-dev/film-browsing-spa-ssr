@@ -78,9 +78,8 @@ export default function Home({
         <ErrorFallback
           error={error}
           reset={handleReset}
-          useMock={handleUseMock}
+          onUseMock={handleUseMock}
         />
-        {useMock && <DisableMockButton />}
       </>
     );
   }
