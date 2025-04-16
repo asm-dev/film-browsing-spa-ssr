@@ -52,7 +52,7 @@ export default function SearchPageClient({
     <Container maxW="6xl" py={10}>
       <VStack gap={6} align="stretch">
         <Heading size="xl" textAlign="center">
-          Resultados de búsqueda
+          {t("search.title")}
         </Heading>
 
         <SearchBar initialQuery={query} onSearch={handleSearch} />
@@ -63,7 +63,7 @@ export default function SearchPageClient({
           </Text>
         )}
 
-        <SimpleGrid columns={[1, 2, 3]} gap={6}>
+        <SimpleGrid columns={[1, 2, 3, 5, 6]} gap={6}>
           {results.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
