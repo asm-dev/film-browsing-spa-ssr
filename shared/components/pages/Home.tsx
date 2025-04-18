@@ -89,7 +89,7 @@ export default function Home({
           <SearchBarComponent />
 
           <SimpleGrid
-            columns={[1, 2, 3, 4, 5]}
+            columns={[1, 2, 3, 4, 5, 6]}
             gap={6}
             px={{ base: 4, md: 0 }}
             justifyItems="center"
