@@ -4,6 +4,10 @@ Este proyecto es una aplicación web que permite a los usuarios explorar una lis
 
 ![image](https://github.com/user-attachments/assets/d2cb9720-903d-48d9-a2ec-3f1e71180e81)
 
+Para una **prueba rápida** de las funcionalidades puedes consultar [esta página](https://film-browsing-spa-ssr-react-app-spa.vercel.app/), donde está desplegado el proyecto de React. Al no tener API Key no podrás probar la conexión con la API pero sí los mecanismos de navegación.
+
+Si lo que quieres es **probar la conexión con la API** tendrás que registrarte en [TMBD](https://developer.themoviedb.org/docs/getting-started) para conseguir tu API key, que habrás de agregar a los dos `.env` del proyecto. Una vez añadida, has de ejecutar `npm i` para instalar las dependencias tanto en el directorio raíz como en cada uno de los proyectos que incluye. Una vez instaladas las dependencias, ya serás capaz de hacer el build con `npm run dev` desde `/react-app-spa` y `/next-ssr`. Ten en cuenta que si usas varias consolas podrás abrir sendos proyectos a la vez.
+
 ## Estructura
 
 Cada aplicación tiene su propio directorio: `/react-app-spa` y `/next-ssr`. Además, hay un espacio compartido llamado `/shared`, que contiene componentes reutilizables, servicios, tipos y datos simulados, lo que fomenta la reutilización de código y la escalabilidad.
