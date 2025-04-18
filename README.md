@@ -17,6 +17,7 @@ Each app has its own directory: `/react-app-spa` and `/next-ssr`. A shared works
 - **Error Handling**: includes user-friendly error boundaries and fallback UIs. For instance, if the API key is missing or invalid, the app shows a clear error message and allows switching to mock data with a single click.
 - **Shared Component Library**: both the SPA and SSR implementations use a common `shared` workspace, where UI components, services, types, and mock logic are defined and reused. This avoids duplication and ensures consistency across both environments.
 - **Monorepo Architecture**: the project is structured as a monorepo using [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces), with separate apps for the React SPA (`/react-app-spa`) and Next.js SSR (`/next-ssr`), and a shared package (`/shared`) that encapsulates all reusable logic.
+  -- **Atomic Component Design**: when developing an application, organizing our componentes is essential for maintainability and scalability. One of the most popular approaches is the atomic folder structure, which we use to host our shared React components.
 
 ## Why Is Any of This Interesting?
 
@@ -38,13 +39,12 @@ By developing this app in both SPA and SSR approaches, we can better compare the
 
 ### Main Differences
 
-| Feature              | SPA (React)                       | SSR (Next.js)                   |
-| -------------------- | --------------------------------- | ------------------------------- |
-| Routing Mechanism    | React Router (manual config)      | File-based routing              |
-| Initial Load         | Faster after first load           | Faster on first paint           |
-| SEO Support          | Requires extra setup              | Built-in SEO support            |
-| API Key Handling     | Via `.env` and client-only logic  | Via `.env` and server rendering |
-| Error Handling       | React ErrorBoundary               | `app/error.tsx` and boundary    |
+| Feature           | SPA (React)                      | SSR (Next.js)                   |
+| ----------------- | -------------------------------- | ------------------------------- |
+| Routing Mechanism | React Router (manual config)     | File-based routing              |
+| Initial Load      | Faster after first load          | Faster on first paint           |
+| SEO Support       | Requires extra setup             | Built-in SEO support            |
+| API Key Handling  | Via `.env` and client-only logic | Via `.env` and server rendering |
+| Error Handling    | React ErrorBoundary              | `app/error.tsx` and boundary    |
 
 Feel free to explore each version of the app and switch between mock and real data modes as needed.
-
