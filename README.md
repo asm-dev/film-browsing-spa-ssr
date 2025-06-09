@@ -1,55 +1,55 @@
 # Movie Explorer SPA/SSR
 
-Este proyecto es una aplicación web que permite a los usuarios explorar una lista de películas populares, buscarlas por título y ver información detallada de cada una. La app está implementada en dos versiones distintas: **SPA (Aplicación de Página Única)** usando React, y **SSR (Renderizado en el Servidor)** usando Next.js.
+This project is a web application that allows users to explore a list of popular movies, search them by title, and view detailed information about each one. The app is implemented in two different versions: **SPA (Single Page Application)** using React, and **SSR (Server-Side Rendering)** using Next.js.
 
 ![image](https://github.com/user-attachments/assets/d2cb9720-903d-48d9-a2ec-3f1e71180e81)
 
-Para una **prueba rápida** de las funcionalidades puedes consultar [esta página](https://film-browsing-spa-ssr-react-app-spa.vercel.app/), donde está desplegado el proyecto de React. Al no tener API Key no podrás probar la conexión con la API pero sí los mecanismos de navegación.
+For a **quick demo** of the features, you can check out [this page](https://film-browsing-spa-ssr-react-app-spa.vercel.app/), where the React project is deployed. Since there is no API Key, you won’t be able to test the API connection, but you can explore the navigation mechanisms.
 
-Si lo que quieres es **probar la conexión con la API** tendrás que registrarte en [TMBD](https://developer.themoviedb.org/docs/getting-started) para conseguir tu API key, que habrás de agregar a los dos `.env` del proyecto. Una vez añadida, has de ejecutar `npm i` para instalar las dependencias tanto en el directorio raíz como en cada uno de los proyectos que incluye. Una vez instaladas las dependencias, ya serás capaz de hacer el build con `npm run dev` desde `/react-app-spa` y `/next-ssr`. Ten en cuenta que si usas varias consolas podrás abrir sendos proyectos a la vez.
+If you want to **test the API connection**, you’ll need to register on [TMDB](https://developer.themoviedb.org/docs/getting-started) to get your API key, which must be added to both `.env` files in the project. Once added, run `npm i` to install the dependencies in both the root directory and each of the included projects. After installing the dependencies, you can build with `npm run dev` from `/react-app-spa` and `/next-ssr`. Note that if you use multiple terminals, you can run both projects simultaneously.
 
-## Estructura
+## Structure
 
-Cada aplicación tiene su propio directorio: `/react-app-spa` y `/next-ssr`. Además, hay un espacio compartido llamado `/shared`, que contiene componentes reutilizables, servicios, tipos y datos simulados, lo que fomenta la reutilización de código y la escalabilidad.
+Each application has its own directory: `/react-app-spa` and `/next-ssr`. In addition, there is a shared space called `/shared`, which contains reusable components, services, types, and mock data. This promotes code reuse and scalability.
 
-## Funcionalidades
+## Features
 
-**Funcionalidades principales**:
-- Página de inicio: muestra una lista de películas populares obtenidas desde una API pública (The Movie Database API).
-- Página de detalle de película: presenta información detallada como título, sinopsis, puntuación, fecha de estreno, entre otros datos.
-- Función de búsqueda: permite buscar películas por título y ver los resultados relevantes al instante.
+**Main features**:
+- Home page: displays a list of popular movies fetched from a public API (The Movie Database API).
+- Movie detail page: shows detailed information such as title, synopsis, rating, release date, among other data.
+- Search function: allows users to search movies by title and view relevant results instantly.
 
-**Funcionalidades secundarias**:
-- Navegación con datos simulados: la app incluye un modo con datos simulados para que se pueda explorar sin necesidad de una clave de API válida de TMDb. Esto es muy útil para entornos de desarrollo o pruebas.
-- Manejo de errores: incluye límites de error amigables para el usuario y pantallas de respaldo. Por ejemplo, si la clave de la API falta o no es válida, la app muestra un mensaje claro y permite cambiar al modo de datos simulados con un solo clic.
-- Biblioteca de componentes compartidos: tanto la versión SPA como la SSR utilizan el mismo espacio compartido `shared`, donde se definen y reutilizan componentes de UI, servicios, tipos y lógica simulada. Esto evita duplicaciones y asegura coherencia en ambos entornos.
-- Arquitectura monorepo: el proyecto está estructurado como un monorepo usando [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces), con aplicaciones separadas para la SPA en React (`/react-app-spa`) y la SSR en Next.js (`/next-ssr`), además de un paquete compartido (`/shared`) que encapsula toda la lógica reutilizable.
-- Componentes atómicos: al desarrollar una app, organizar los componentes es esencial para su mantenimiento y escalabilidad. Uno de los enfoques más usados es la estructura de carpetas atómica, que utilizamos para alojar nuestros componentes React compartidos en `/shared`.
+**Secondary features**:
+- Navigation with mock data: the app includes a mode with mock data so it can be explored without a valid TMDb API key. This is very useful for development or testing environments.
+- Error handling: includes user-friendly error boundaries and fallback screens. For example, if the API key is missing or invalid, the app displays a clear message and allows switching to mock data mode with a single click.
+- Shared component library: both SPA and SSR versions use the same shared space `shared`, where UI components, services, types, and mock logic are defined and reused. This avoids duplication and ensures consistency in both environments.
+- Monorepo architecture: the project is structured as a monorepo using [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces), with separate applications for the SPA in React (`/react-app-spa`) and SSR in Next.js (`/next-ssr`), plus a shared package (`/shared`) that encapsulates all reusable logic.
+- Atomic components: when developing an app, organizing components is essential for maintainability and scalability. One of the most common approaches is the atomic folder structure, which we use to host our shared React components in `/shared`.
 
-## ¿Por qué es interesante todo esto?
+## Why is all this interesting?
 
-Al desarrollar esta aplicación en versiones SPA y SSR, podemos comparar mejor los dos enfoques principales del desarrollo web moderno:
+By developing this application in both SPA and SSR versions, we can better compare the two main approaches of modern web development:
 
-**Enrutamiento en SPA**
+**Routing in SPA**
 
-- El enrutamiento del lado del cliente se gestiona con React Router.
-- Navegación rápida y fluida sin recargar la página.
-- El SEO y el rendimiento de carga inicial requieren configuraciones adicionales.
-- Ideal para aplicaciones dinámicas e interactivas.
+- Client-side routing is handled with React Router.
+- Fast and smooth navigation without reloading the page.
+- SEO and initial load performance require additional configuration.
+- Ideal for dynamic and interactive applications.
 
-**Enrutamiento en SSR**
+**Routing in SSR**
 
-- Utiliza el enrutamiento basado en archivos de Next.js (estructura del directorio `/app`).
-- Renderiza las páginas en el servidor con datos de la API antes de enviarlas al cliente.
-- Mejor rendimiento inicial y SEO desde el primer momento.
-- Simplifica la organización del enrutamiento y los layouts.
+- Uses file-based routing from Next.js (based on the `/app` directory structure).
+- Renders pages on the server with API data before sending them to the client.
+- Better initial performance and SEO out of the box.
+- Simplifies routing and layout organization.
 
-**Principales diferencias**
+**Main differences**
 
-| Característica     | SPA (React)                            | SSR (Next.js)                                |
+| Feature            | SPA (React)                            | SSR (Next.js)                                |
 | ------------------ | -------------------------------------- | -------------------------------------------- |
-| Mecanismo de rutas | React Router (configuración manual)    | Enrutamiento basado en archivos              |
-| Carga inicial      | Más rápida                             | Más rápida en el primer renderizado          |
-| Soporte SEO        | Requiere configuración adicional       | Soporte SEO integrado                        |
-| Manejo de la API   | A través de `.env` y lógica en cliente | A través de `.env` y renderizado en servidor |
-| Manejo de errores  | React ErrorBoundary                    | `app/error.tsx` y límites de error           |
+| Routing mechanism  | React Router (manual setup)            | File-based routing                           |
+| Initial load       | Faster                                 | Faster on first render                       |
+| SEO support        | Requires extra setup                   | Built-in SEO support                         |
+| API handling       | Via `.env` and client-side logic       | Via `.env` and server-side rendering         |
+| Error handling     | React ErrorBoundary                    | `app/error.tsx` and error boundaries         |
